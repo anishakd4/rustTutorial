@@ -74,17 +74,23 @@ fn main() {
     println!("mutable_borrow 2");
     mutable_borrow2();
 
-
     println!("reference_rules 1");
     reference_rules1();
-
 
     println!("reference_rules 2");
     reference_rules2();
 
-
     println!("reference_rules 3");
-    reference_rules3()
+    reference_rules3();
+
+    println!("reference_rules 4");
+    //reference_rules4();
+
+    println!("reference_rules 5");
+    reference_rules5();
+
+    println!("reference_rules 6");
+    reference_rules6();
 
 }
 
@@ -241,15 +247,38 @@ fn reference_rules3(){
 }
 
 fn reference_rules4(){
-    let mut s1: String = String::from("Hello");
+    // let mut s1: String = String::from("Hello");
 
-    let w1 = &mut s1; //first mutable borrow occurs here
-    w1.push_str(" World");
+    // let w1 = &mut s1; //first mutable borrow occurs here
+    // w1.push_str(" World");
 
-    //second mutable borrow occurs here
-    let w2 = &mut s1; //cannot borrow `s1` as mutable more than once at a time
-    w2.push_str(" Code");
+    // //second mutable borrow occurs here
+    // let w2 = &mut s1; //cannot borrow `s1` as mutable more than once at a time
+    // w2.push_str(" Code");
 
-    println!("w2:{} w1:{}", w2, w1); //first borrow later used here
+    // println!("w2:{} w1:{}", w2, w1); //first borrow later used here
 }
 
+
+fn reference_rules5(){
+    let mut s1: String = String::from("Hello");
+
+    let w1 = &mut s1;
+    w1.push_str(" World");
+    println!("w1:{} ", w1);
+
+    let r1 = & s1; 
+    println!("r1:{}", r1); 
+}
+
+fn reference_rules6(){
+    // let mut s1: String = String::from("Hello");
+
+    // let w1 = &mut s1; //mutable borrow occurs here
+    // w1.push_str(" World");
+
+    // let r1 = &s1; //immutable borrow occurs here
+    // println!("r1:{}", r1);
+
+    // println!("w1:{} ", w1); //mutable borrow later used here
+}
