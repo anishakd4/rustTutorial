@@ -39,3 +39,17 @@ In the above example stack is used
 ![heap_approach](./heap_approach.png)
 
 But in above heap is used.
+
+## Avoiding ownership
+
+- clone method is used for deep copy of heap data. This is an expensive method.
+
+## Borrowing ownership
+
+- &s1 syntax lets us creates a reference that refers to the value of s1 but does not own it.
+- s3 = &s . Here s3 is a & reference. So the data it refers to can not be borrowed as mutable.
+
+## Reference rules
+
+- Multiple read operations are fine.
+- Multiple write-write operations and read-write operations needs to be performed synchronously.

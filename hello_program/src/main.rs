@@ -59,7 +59,32 @@ fn main() {
 
     s2_s3_s4();
 
+    println!("avoiding_ownership 1");
     avoiding_ownership();
+
+    println!("avoiding_ownership 2");
+    avoiding_ownership2();
+
+    println!("avoiding_ownership 3");
+    avoiding_ownership3();
+
+    println!("mutable_borrow 1");
+    mutable_borrow();
+
+    println!("mutable_borrow 2");
+    mutable_borrow2();
+
+
+    println!("reference_rules 1");
+    reference_rules1();
+
+
+    println!("reference_rules 2");
+    reference_rules2();
+
+
+    println!("reference_rules 3");
+    reference_rules3()
 
 }
 
@@ -141,3 +166,90 @@ fn calculate_length(s1: String) -> (String, usize) {
     let length: usize = s1.len();
     return (s1, length);
 }
+
+fn avoiding_ownership2(){
+    let s1: String = String::from("hello");
+    let len = calculate_length2(s1.clone());
+    println!("s1: {}", s1);
+    println!("len: {}", len);
+}
+
+fn calculate_length2(s1: String) -> usize {
+    let length: usize = s1.len();
+    return length;
+}
+
+
+fn avoiding_ownership3(){
+    let s1: String = String::from("hello");
+    let len = calculate_length3(&s1); //borrow operation
+    println!("s1: {}", s1);
+    println!("len: {}", len);
+}
+
+fn calculate_length3(s1: &String) -> usize {
+    let length: usize = s1.len();
+    return length;
+}
+
+fn mutable_borrow(){
+    let s1: String = String::from("hello");
+    append_string(&s1); //borrow operation
+    println!("s1: {}", s1);
+}
+fn append_string(s1: &String){
+    //s1.push_str("World"); //s1` is a `&` reference, so the data it refers to cannot be borrowed as mutable
+}
+
+fn mutable_borrow2(){
+    let mut s1: String = String::from("hello");
+    append_string2(&mut s1); //borrow operation
+    println!("s1: {}", s1);
+}
+fn append_string2(s1: &mut String){
+    s1.push_str("World")
+}
+
+fn reference_rules1(){
+    let s1: String = String::from("Hello");
+    let r1 = &s1;
+    let r2 = &s1;
+
+    println!("r1:{} r2:{}", r1, r2);
+}
+
+fn reference_rules2(){
+    let s1: String = String::from("Hello");
+
+    let r1 = &s1;
+    println!("r1:{}", r1);
+
+    let r2 = &s1;
+    println!("r2:{}", r2);
+}
+
+fn reference_rules3(){
+    let mut s1: String = String::from("Hello");
+
+    let w1 = &mut s1;
+    w1.push_str(" World");
+    println!("w1:{}", w1);
+
+    let w2 = &mut s1;
+    w2.push_str(" Code");
+    println!("w2:{}", w2);
+}
+
+fn reference_rules4(){
+    let mut s1: String = String::from("Hello");
+
+    let w1 = &mut s1; //first mutable borrow occurs here
+    w1.push_str(" World");
+
+    //second mutable borrow occurs here
+    let w2 = &mut s1; //cannot borrow `s1` as mutable more than once at a time
+    w2.push_str(" Code");
+
+    println!("w2:{} w1:{}", w2, w1); //first borrow later used here
+}
+
