@@ -53,3 +53,7 @@ But in above heap is used.
 
 - Multiple read operations are fine.
 - Multiple write-write operations and read-write operations needs to be performed synchronously.
+
+## Reference vs pointer
+
+![reference_vs_pointer](./reference_vs_pointer.png)

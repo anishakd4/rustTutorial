@@ -92,6 +92,21 @@ fn main() {
     println!("reference_rules 6");
     reference_rules6();
 
+    println!("referencing 1");
+    referencing1();
+
+    println!("auto dereferencing");
+    auto_dereferencing();
+
+    println!("auto dereferencing 2");
+    auto_dereferencing2();
+
+    println!("dereferencing");
+    dereferencing();
+
+    println!("dangling_reference");
+    dangling_reference();
+
 }
 
 fn print_value2(){
@@ -281,4 +296,47 @@ fn reference_rules6(){
     // println!("r1:{}", r1);
 
     // println!("w1:{} ", w1); //mutable borrow later used here
+}
+
+fn referencing1(){
+    let x = 5;
+    println!("address: {:p}", &x);
+    let y = &x;
+    println!("address: {:p}", y);
+}
+
+fn auto_dereferencing(){
+    let x = 5;
+    let y = &x;
+    println!("y: {}", y); //auto dereferencing
+    println!("y: {}", *y); //dereferencing
+}
+
+fn auto_dereferencing2(){
+    let s1: String = String::from("hello");
+    let len = calculate_length4(&s1); //borrow operation
+    println!("s1: {}", s1);
+    println!("len: {}", len);
+}
+
+fn calculate_length4(s1: &String) -> usize {
+    let length: usize = s1.len(); //auto dereferencing . same as (*s).len()
+    return length;
+}
+
+fn dereferencing(){
+    let mut x = 5;
+    x = x + 1;
+    let y=&mut x;
+    *y = *y + 1;
+    println!("x: {}", x);
+}
+
+fn dangling_reference(){
+    let ref_to_nothing = create_string_ref();
+}
+
+fn create_string_ref() -> &String{
+    let s: String = String::from("Hello");
+    return &s; //returns a reference to data owned by the current function
 }
