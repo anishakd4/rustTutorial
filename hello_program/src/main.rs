@@ -107,6 +107,15 @@ fn main() {
     println!("dangling_reference");
     dangling_reference();
 
+    println!("float data type");
+    float_type();
+
+    println!("bool data type");
+    bool_type();
+
+    println!("char data type");
+    char_type();
+
 }
 
 fn print_value2(){
@@ -333,10 +342,39 @@ fn dereferencing(){
 }
 
 fn dangling_reference(){
-    let ref_to_nothing = create_string_ref();
+    //let ref_to_nothing = create_string_ref();
 }
 
-fn create_string_ref() -> &String{
-    let s: String = String::from("Hello");
-    return &s; //returns a reference to data owned by the current function
+// fn create_string_ref() -> &String{
+//     let s: String = String::from("Hello");
+//     return &s; //returns a reference to data owned by the current function
+// }
+
+fn float_type(){
+    let float_32_num:f32 = 34.5; //f32 floating point number
+    let float_64_num = 34.4545; //default type is f64. type inference
+
+    println!("float_32_num : {}", float_32_num);
+    println!("float_64_num : {}", float_64_num);
+}
+
+fn bool_type(){
+    let is_raining: bool = true;
+    let is_sunny = false;
+
+    let need_umbrella = is_raining && !is_sunny;
+    let need_glasses = is_raining || is_sunny;
+
+    println!("need_umbrella : {} need_glasses: {}", need_umbrella, need_glasses);
+}
+
+fn char_type(){
+    let letter_a = 'a';
+    let emoji = '😀';
+    let kanji = '漢';
+
+    println!("letter a: {}", letter_a);
+    println!("emoji a: {}", emoji);
+    println!("kanji a: {}", kanji);
+
 }
