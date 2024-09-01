@@ -116,6 +116,9 @@ fn main() {
     println!("char data type");
     char_type();
 
+    println!("array_type");
+    array_type();
+
 }
 
 fn print_value2(){
@@ -377,4 +380,20 @@ fn char_type(){
     println!("emoji a: {}", emoji);
     println!("kanji a: {}", kanji);
 
+}
+
+fn array_type(){
+
+    //let mut arr1:[u8;5]; //array declarations
+
+    let mut arr1;
+    arr1 = [1, 2, 3, 4, 5];
+
+    println!("arr1[0] = {}", arr1[0]);
+    println!("arr1 = {:?}", arr1);
+
+    arr1[2]= 30;
+    println!("arr1 = {:?}", arr1);
+
+    println!("length of arr1: {}", arr1.len());
 }

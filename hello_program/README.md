@@ -61,3 +61,5 @@ But in above heap is used.
 ## character type
 
 - A char in Rust is always 4 bytes in size and can represent characters from various languages, including ASCII characters, emojis and characters from non-latin scripts.
+
+## array type
