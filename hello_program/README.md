@@ -63,3 +63,5 @@ But in above heap is used.
 - A char in Rust is always 4 bytes in size and can represent characters from various languages, including ASCII characters, emojis and characters from non-latin scripts.
 
 ## array type
+
+- An array is a collection of homogenous elements. Meaning collection of only 1 type of elements.
