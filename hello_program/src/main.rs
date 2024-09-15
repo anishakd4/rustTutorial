@@ -158,6 +158,12 @@ fn main() {
     println!("For loop");
     for_loop();
 
+    println!("match");
+    match_number();
+
+    println!("match2");
+    match_number2();
+
 }
 
 fn print_value2(){
@@ -580,5 +586,33 @@ fn for_loop(){
 
     for element in &arr {
         println!("{}", element);
+    }
+}
+
+fn match_number(){
+    let num = 5;
+
+    match num {
+        1 => println!("One"),
+        2 | 3 => println!("Two"),
+        4 => println!("Three"),
+        _ => println!("Unknown"),
+    }
+}
+
+fn match_number2(){
+    fn is_even(x: i32)-> bool{
+        if x % 2 == 0 {
+            return true;
+        }
+        return false;
+    }
+
+    let num = 5;
+
+    match num {
+        x if is_even(x) => println!("x is even"),
+        x if !is_even(x) => println!("x is not even"),
+        _ => println!("Unknown"),
     }
 }
