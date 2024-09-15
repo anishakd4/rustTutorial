@@ -164,6 +164,9 @@ fn main() {
     println!("match2");
     match_number2();
 
+    println!("io_example");
+    io_example();
+
 }
 
 fn print_value2(){
@@ -615,4 +618,12 @@ fn match_number2(){
         x if !is_even(x) => println!("x is not even"),
         _ => println!("Unknown"),
     }
+}
+
+use std::io;
+fn io_example(){
+    let mut input = String::new();
+    println!("please input your name:");
+    io::stdin().read_line(&mut input).expect("Input failed");
+    println!("input: {}", input);
 }
