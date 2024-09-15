@@ -513,5 +513,11 @@ fn type_inference(){
     let y = 6.5;
     let z = "Hello";
 
-    println!("x: {} y: {} z: {}", x, y, z);
+    print_variable_type(&x);
+    print_variable_type(&y);
+    print_variable_type(&z);
+}
+
+fn print_variable_type<K>(_: &K) {
+    println!("{}", std::any::type_name::<K>())
 }
