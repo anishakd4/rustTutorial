@@ -143,6 +143,21 @@ fn main() {
     println!("Type inference");
     type_inference();
 
+    println!("shadowing");
+    shadowing();
+
+    println!("If Else");
+    if_else();
+
+    println!("Loop");
+    simple_loop();
+
+    println!("While loop");
+    while_loop();
+
+    println!("For loop");
+    for_loop();
+
 }
 
 fn print_value2(){
@@ -520,4 +535,50 @@ fn type_inference(){
 
 fn print_variable_type<K>(_: &K) {
     println!("{}", std::any::type_name::<K>())
+}
+
+fn shadowing(){
+    let x = 5;
+    println!("x: {}", x);
+    let x = "Anish";
+    println!("x: {}", x);
+    let x = x.len();
+    println!("x: {}", x);
+}
+
+fn if_else(){
+    let num = 12;
+
+    if num % 3==0 && num %4 ==0 {
+        println!("Case 1");
+    } else if num % 3==0 {
+        println!("Case 2");
+    } else if num %4 ==0 {
+        println!("Case 3");
+    } else {
+        println!("case 4");
+    }
+}
+
+fn simple_loop(){
+    // loop {
+    //     println!("Hello"); //This will continue to print hello until a break statement is used
+    // }
+}
+
+fn while_loop(){
+    let mut count = 0;
+    
+    while count < 5 {
+        println!("While loop");
+        count += 1;
+    }
+}
+
+fn for_loop(){
+    let arr = [1, 2, 3];
+
+    for element in &arr {
+        println!("{}", element);
+    }
 }
