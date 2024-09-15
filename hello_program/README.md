@@ -65,3 +65,15 @@ But in above heap is used.
 ## array type
 
 - An array is a collection of homogenous elements. Meaning collection of only 1 type of elements.
+
+## pass_array_to_function2
+
+- We can pass array to function in 2 ways. One by value and other by reference.
+
+## Vector dynamic array
+
+- Array is stack based data where we were already aware of its size at the compile time. But Vector is a heap allocated data
+
+## Type inference
+
+- Type inference is a feature in programming languages that allows the compiler to deduce the data type of a variable or expression without explicit type annotations from the programmer.

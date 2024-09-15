@@ -119,6 +119,30 @@ fn main() {
     println!("array_type");
     array_type();
 
+    println!("pass array to function directly");
+    pass_array_to_function();
+
+    println!("pass array to function via reference");
+    pass_array_to_function2();
+
+    println!("Vectors");
+    vector_fn();
+
+    println!("Vector passed to function");
+    vector_fn2();
+
+    println!("Vector passed as reference to function");
+    vector_fn3_borrowing();
+
+    println!("Vector passed as mutable reference to function");
+    vector_fn3_borrowing_mutable();
+
+    println!("Vector passed to function via cloning");
+    vector_fn3_cloning();
+
+    println!("Type inference");
+    type_inference();
+
 }
 
 fn print_value2(){
@@ -396,4 +420,98 @@ fn array_type(){
     println!("arr1 = {:?}", arr1);
 
     println!("length of arr1: {}", arr1.len());
+}
+
+//pass directly
+fn pass_array_to_function(){
+    let arr:[&str; 3] = ["Hello", "world", "coders"];
+    write_arr(arr); // here array is fixed array there is no heap involved here. Array is passes directly to function
+    println!("arr : {:?}", arr);
+}
+
+//This method of directly passing array is expensive as we are making a copy of the whole array.
+fn write_arr(mut arr1: [&str;3]){ //arr1 is a new copy of arr
+    arr1[0]="Fellow"; //changes here is only for arr1 not for arr
+    println!("arr1: {:?}", arr1);
+}
+
+//pass by reference
+fn pass_array_to_function2(){
+    let mut arr:[&str; 3] = ["Hello", "world", "coders"];
+    write_arr2(&mut arr);
+    println!("arr : {:?}", arr);
+}
+
+fn write_arr2(arr2: &mut [&str;3]){ //arr1 is a new copy of arr
+    arr2[0]="Fellow"; //changes here is only for arr1 not for arr
+    println!("arr2: {:?}", arr2);
+}
+
+fn vector_fn(){
+    let mut v: Vec<i32> = Vec::new();
+    v.push(1);
+    v.push(2);
+    v.push(3);
+
+    println!("v: {:?}", v);
+
+    let mut w = Vec::<i32>::new();
+    w.push(4);
+    w.push(5);
+    w.push(6);
+    println!("w: {:?}", w);
+
+    let mut x = vec![7, 8, 9, 10, 11];
+    x.push(20);
+    x.push(21);
+    println!("x: {:?}", x);
+}
+
+fn vector_fn2(){
+    let vrr: Vec<&str> = vec!["Hello", "World!", "coders"];
+    write_vec3(vrr);//ownership transferred
+    //println!("vrr: {:?}", vrr); //so this won't compile
+}
+
+fn write_vec3(vrr3: Vec<&str>){ //vrr3 is the current owner
+    println!("vrr3: {:?}", vrr3);
+}
+
+fn vector_fn3_borrowing(){
+    let vrr: Vec<&str> = vec!["Hello", "World!", "coders"];
+    write_vec4(&vrr);
+    println!("vrr: {:?}", vrr);
+}
+
+fn write_vec4(vrr3: &Vec<&str>){
+    println!("vrr3: {:?}", vrr3);
+}
+
+fn vector_fn3_borrowing_mutable(){
+    let mut vrr: Vec<&str> = vec!["Hello", "World!", "coders"];
+    write_vec5(&mut vrr);
+    println!("vrr: {:?}", vrr); 
+}
+
+fn write_vec5(vrr3: &mut Vec<&str>){
+    vrr3.push("anish");
+    println!("vrr3: {:?}", vrr3);
+}
+
+fn vector_fn3_cloning(){
+    let vrr: Vec<&str> = vec!["Hello", "World!", "coders"];
+    write_vec6(vrr.clone());
+    println!("vrr: {:?}", vrr); 
+}
+
+fn write_vec6(vrr3: Vec<&str>){
+    println!("vrr3: {:?}", vrr3);
+}
+
+fn type_inference(){
+    let x = 5;
+    let y = 6.5;
+    let z = "Hello";
+
+    println!("x: {} y: {} z: {}", x, y, z);
 }
