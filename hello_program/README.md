@@ -1,10 +1,37 @@
+## Rust
+
+- Rust is a system programming language. System programming languages are those programming languages through which hardware can be accessed easily.
+
+## To create a new program
+
+- `cargo run hello_program`  
+
+## fn means function
+
+- function name starts with `fn`
+
+## Rust requires lines to be ended with semicolon
+
+## Cargo is the package manager
+
+## Casing
+
+- Rust follows SnakeCase while javascript follows CamelCase. As soon as we start using camelcase rust will start throwing warning. All folders and files needs to be named according to snakecase.
+
 ## main function
 
 - main function is the entry point for a rust program.
-- `cargo build` builds code into machine executable code. executable is generated into target folder then into debug folder.
-- `cargo run` builds and executes code.
+
+## cargo
+
+- `cargo build` builds or compiles code into machine executable code. executable is generated into target/debug folder.
+- `cargo run` builds and executes code. It might skip compiling if no changes have been in the code.
 - As we not making our code production ready we are just testing it so it is building an un optimized version in the debug folder.
 - `cargo build --release` builds optimized production ready application.
+
+## Cargo.lock
+
+- Similar like package.json here dependencies version are locked.
 
 ## data type
 
