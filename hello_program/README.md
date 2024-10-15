@@ -36,14 +36,15 @@
 ## data type
 
 - u8 means unsigned integer in 8 bits.
-- type inference works in primitive data types.
+- unsigned will contain only positive values but signed will have both negative and positive values
+- type inference works in primitive data types but not in complex data types.
+
+![integer_types](./integer_types.png)
+![integer_range](./integer_range.png)
 
 ## Formatted string
 
 - `println!("this is stored in num2: {}", num2);`
-
-![integer_types](./integer_types.png)
-![integer_range](./integer_range.png)
 
 ## Immutable data type
 

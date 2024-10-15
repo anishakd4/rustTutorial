@@ -1,11 +1,8 @@
-const GLOBAL_CONST:u8 = 100;  //warning: constant `global_const` should have an upper case name
+const GLOBAL_CONST: u8 = 100;  //warning: constant `global_const` should have an upper case name
 
 fn main() {
     println!("Integer data types");
     integer_data_types();
-
-    let num2 = 6;
-    println!("this is stored in num2: {}", num2);
 
     //warning: value assigned to `num3` is never read. Rust throws this warning as the value assigned to num3 is never used
     let mut num3 = 7;
@@ -165,35 +162,39 @@ fn main() {
 
     println!("io_example");
     io_example();
-
 }
 
-fn integer_data_types(){
-    let num:u8 = 5;
+fn integer_data_types() {
+    let num: u8 = 5;
     println!("This is stored in num: {}", num);
+    let num2 = 6;
+    println!("this is stored in num2: {}", num2);
+
+    //let x: u8 = 256; //the literal `256` does not fit into the type `u8` whose range is `0..=255
+    //let x:u8 = -5; //cannot apply unary operator `-` note: unsigned values cannot be negated
 }
 
-fn print_value2(){
+fn print_value2() {
     println!("GLOBAL_CONST: {}", GLOBAL_CONST);
 }
 
-fn add(item1: u8, item2: u8) -> u8{
+fn add(item1: u8, item2: u8) -> u8 {
     return item1 + item2;
 }
 
-fn print_value(item: u8){
+fn print_value(item: u8) {
     println!("My name is anish");
     println!("item: {}", item);
 }
 
-fn ab1(){
+fn ab1() {
     let a = 5;
     let b = a;
     println!("a: {}", a);
     println!("b: {}", b);
 }
 
-fn str1str2(){
+fn str1str2() {
     let str1 = String::from("Hello"); //str1 is the owner of hello value
     // str1.push_str(" world");
     let str2 = str1; // transfer of ownership because as per rules there can be only 1 owner
@@ -201,32 +202,32 @@ fn str1str2(){
     println!("str2 : {}", str2);
 }
 
-fn process_integer_main(){
-    let x:u8 = 10;
+fn process_integer_main() {
+    let x: u8 = 10;
     process_integer(x);
     println!("process_integer_main : x: {}", x);
 }
 
-fn process_integer(x: u8){
+fn process_integer(x: u8) {
     println!("x: {}", x);
 }
 
-fn process_string_main(){
-    let x:String = String::from("Hello");
-    process_string(x);//transfer of ownership
+fn process_string_main() {
+    let x: String = String::from("Hello");
+    process_string(x); //transfer of ownership
     //println!("process_string_main : x: {}", x); //x in nothing here as ownership is already transferred.
 }
 
-fn process_string(item: String){ //hello new owner is item
+fn process_string(item: String) { //hello new owner is item
     println!("item: {}", item);
 }
 
-fn s2_s3_s4(){
-    let s1:String = get_string(); //s1 is the owner of  "hello"
+fn s2_s3_s4() {
+    let s1: String = get_string(); //s1 is the owner of  "hello"
     println!("this is s1: {}", s1);
 
     let s2: String = String::from("World"); //s2 is owner of "world"
-    let s3: String = send_get_string(s2);//transfer of ownership from s2 to received_string
+    let s3: String = send_get_string(s2); //transfer of ownership from s2 to received_string
 
     println!("s3: {}", s3);
 }
@@ -236,11 +237,11 @@ fn get_string() -> String {
     return new_string; //transferring ownership
 }
 
-fn send_get_string(received_string: String)->String {
-    return received_string;//transfer of ownership from received_string to s3
+fn send_get_string(received_string: String) -> String {
+    return received_string; //transfer of ownership from received_string to s3
 }
 
-fn avoiding_ownership(){
+fn avoiding_ownership() {
     let s1: String = String::from("hello");
     let (s2, len) = calculate_length(s1);
     println!("s2: {}", s2);
@@ -252,7 +253,7 @@ fn calculate_length(s1: String) -> (String, usize) {
     return (s1, length);
 }
 
-fn avoiding_ownership2(){
+fn avoiding_ownership2() {
     let s1: String = String::from("hello");
     let len = calculate_length2(s1.clone());
     println!("s1: {}", s1);
@@ -265,7 +266,7 @@ fn calculate_length2(s1: String) -> usize {
 }
 
 
-fn avoiding_ownership3(){
+fn avoiding_ownership3() {
     let s1: String = String::from("hello");
     let len = calculate_length3(&s1); //borrow operation
     println!("s1: {}", s1);
@@ -277,25 +278,25 @@ fn calculate_length3(s1: &String) -> usize {
     return length;
 }
 
-fn mutable_borrow(){
+fn mutable_borrow() {
     let s1: String = String::from("hello");
     append_string(&s1); //borrow operation
     println!("s1: {}", s1);
 }
-fn append_string(s1: &String){
+fn append_string(s1: &String) {
     //s1.push_str("World"); //s1` is a `&` reference, so the data it refers to cannot be borrowed as mutable
 }
 
-fn mutable_borrow2(){
+fn mutable_borrow2() {
     let mut s1: String = String::from("hello");
     append_string2(&mut s1); //borrow operation
     println!("s1: {}", s1);
 }
-fn append_string2(s1: &mut String){
+fn append_string2(s1: &mut String) {
     s1.push_str("World")
 }
 
-fn reference_rules1(){
+fn reference_rules1() {
     let s1: String = String::from("Hello");
     let r1 = &s1;
     let r2 = &s1;
@@ -303,7 +304,7 @@ fn reference_rules1(){
     println!("r1:{} r2:{}", r1, r2);
 }
 
-fn reference_rules2(){
+fn reference_rules2() {
     let s1: String = String::from("Hello");
 
     let r1 = &s1;
@@ -313,7 +314,7 @@ fn reference_rules2(){
     println!("r2:{}", r2);
 }
 
-fn reference_rules3(){
+fn reference_rules3() {
     let mut s1: String = String::from("Hello");
 
     let w1 = &mut s1;
@@ -325,7 +326,7 @@ fn reference_rules3(){
     println!("w2:{}", w2);
 }
 
-fn reference_rules4(){
+fn reference_rules4() {
     // let mut s1: String = String::from("Hello");
 
     // let w1 = &mut s1; //first mutable borrow occurs here
@@ -339,18 +340,18 @@ fn reference_rules4(){
 }
 
 
-fn reference_rules5(){
+fn reference_rules5() {
     let mut s1: String = String::from("Hello");
 
     let w1 = &mut s1;
     w1.push_str(" World");
     println!("w1:{} ", w1);
 
-    let r1 = & s1; 
-    println!("r1:{}", r1); 
+    let r1 = &s1;
+    println!("r1:{}", r1);
 }
 
-fn reference_rules6(){
+fn reference_rules6() {
     // let mut s1: String = String::from("Hello");
 
     // let w1 = &mut s1; //mutable borrow occurs here
@@ -362,21 +363,21 @@ fn reference_rules6(){
     // println!("w1:{} ", w1); //mutable borrow later used here
 }
 
-fn referencing1(){
+fn referencing1() {
     let x = 5;
     println!("address: {:p}", &x);
     let y = &x;
     println!("address: {:p}", y);
 }
 
-fn auto_dereferencing(){
+fn auto_dereferencing() {
     let x = 5;
     let y = &x;
     println!("y: {}", y); //auto dereferencing
     println!("y: {}", *y); //dereferencing
 }
 
-fn auto_dereferencing2(){
+fn auto_dereferencing2() {
     let s1: String = String::from("hello");
     let len = calculate_length4(&s1); //borrow operation
     println!("s1: {}", s1);
@@ -388,15 +389,15 @@ fn calculate_length4(s1: &String) -> usize {
     return length;
 }
 
-fn dereferencing(){
+fn dereferencing() {
     let mut x = 5;
     x = x + 1;
-    let y=&mut x;
+    let y = &mut x;
     *y = *y + 1;
     println!("x: {}", x);
 }
 
-fn dangling_reference(){
+fn dangling_reference() {
     //let ref_to_nothing = create_string_ref();
 }
 
@@ -405,15 +406,15 @@ fn dangling_reference(){
 //     return &s; //returns a reference to data owned by the current function
 // }
 
-fn float_type(){
-    let float_32_num:f32 = 34.5; //f32 floating point number
+fn float_type() {
+    let float_32_num: f32 = 34.5; //f32 floating point number
     let float_64_num = 34.4545; //default type is f64. type inference
 
     println!("float_32_num : {}", float_32_num);
     println!("float_64_num : {}", float_64_num);
 }
 
-fn bool_type(){
+fn bool_type() {
     let is_raining: bool = true;
     let is_sunny = false;
 
@@ -423,7 +424,7 @@ fn bool_type(){
     println!("need_umbrella : {} need_glasses: {}", need_umbrella, need_glasses);
 }
 
-fn char_type(){
+fn char_type() {
     let letter_a = 'a';
     let emoji = '😀';
     let kanji = '漢';
@@ -431,10 +432,9 @@ fn char_type(){
     println!("letter a: {}", letter_a);
     println!("emoji a: {}", emoji);
     println!("kanji a: {}", kanji);
-
 }
 
-fn array_type(){
+fn array_type() {
 
     //let mut arr1:[u8;5]; //array declarations
 
@@ -444,38 +444,38 @@ fn array_type(){
     println!("arr1[0] = {}", arr1[0]);
     println!("arr1 = {:?}", arr1);
 
-    arr1[2]= 30;
+    arr1[2] = 30;
     println!("arr1 = {:?}", arr1);
 
     println!("length of arr1: {}", arr1.len());
 }
 
 //pass directly
-fn pass_array_to_function(){
-    let arr:[&str; 3] = ["Hello", "world", "coders"];
+fn pass_array_to_function() {
+    let arr: [&str; 3] = ["Hello", "world", "coders"];
     write_arr(arr); // here array is fixed array there is no heap involved here. Array is passes directly to function
     println!("arr : {:?}", arr);
 }
 
 //This method of directly passing array is expensive as we are making a copy of the whole array.
-fn write_arr(mut arr1: [&str;3]){ //arr1 is a new copy of arr
-    arr1[0]="Fellow"; //changes here is only for arr1 not for arr
+fn write_arr(mut arr1: [&str; 3]) { //arr1 is a new copy of arr
+    arr1[0] = "Fellow"; //changes here is only for arr1 not for arr
     println!("arr1: {:?}", arr1);
 }
 
 //pass by reference
-fn pass_array_to_function2(){
-    let mut arr:[&str; 3] = ["Hello", "world", "coders"];
+fn pass_array_to_function2() {
+    let mut arr: [&str; 3] = ["Hello", "world", "coders"];
     write_arr2(&mut arr);
     println!("arr : {:?}", arr);
 }
 
-fn write_arr2(arr2: &mut [&str;3]){ //arr1 is a new copy of arr
-    arr2[0]="Fellow"; //changes here is only for arr1 not for arr
+fn write_arr2(arr2: &mut [&str; 3]) { //arr1 is a new copy of arr
+    arr2[0] = "Fellow"; //changes here is only for arr1 not for arr
     println!("arr2: {:?}", arr2);
 }
 
-fn vector_fn(){
+fn vector_fn() {
     let mut v: Vec<i32> = Vec::new();
     v.push(1);
     v.push(2);
@@ -495,48 +495,48 @@ fn vector_fn(){
     println!("x: {:?}", x);
 }
 
-fn vector_fn2(){
+fn vector_fn2() {
     let vrr: Vec<&str> = vec!["Hello", "World!", "coders"];
-    write_vec3(vrr);//ownership transferred
+    write_vec3(vrr); //ownership transferred
     //println!("vrr: {:?}", vrr); //so this won't compile
 }
 
-fn write_vec3(vrr3: Vec<&str>){ //vrr3 is the current owner
+fn write_vec3(vrr3: Vec<&str>) { //vrr3 is the current owner
     println!("vrr3: {:?}", vrr3);
 }
 
-fn vector_fn3_borrowing(){
+fn vector_fn3_borrowing() {
     let vrr: Vec<&str> = vec!["Hello", "World!", "coders"];
     write_vec4(&vrr);
     println!("vrr: {:?}", vrr);
 }
 
-fn write_vec4(vrr3: &Vec<&str>){
+fn write_vec4(vrr3: &Vec<&str>) {
     println!("vrr3: {:?}", vrr3);
 }
 
-fn vector_fn3_borrowing_mutable(){
+fn vector_fn3_borrowing_mutable() {
     let mut vrr: Vec<&str> = vec!["Hello", "World!", "coders"];
     write_vec5(&mut vrr);
-    println!("vrr: {:?}", vrr); 
+    println!("vrr: {:?}", vrr);
 }
 
-fn write_vec5(vrr3: &mut Vec<&str>){
+fn write_vec5(vrr3: &mut Vec<&str>) {
     vrr3.push("anish");
     println!("vrr3: {:?}", vrr3);
 }
 
-fn vector_fn3_cloning(){
+fn vector_fn3_cloning() {
     let vrr: Vec<&str> = vec!["Hello", "World!", "coders"];
     write_vec6(vrr.clone());
-    println!("vrr: {:?}", vrr); 
+    println!("vrr: {:?}", vrr);
 }
 
-fn write_vec6(vrr3: Vec<&str>){
+fn write_vec6(vrr3: Vec<&str>) {
     println!("vrr3: {:?}", vrr3);
 }
 
-fn type_inference(){
+fn type_inference() {
     let x = 5;
     let y = 6.5;
     let z = "Hello";
@@ -550,7 +550,7 @@ fn print_variable_type<K>(_: &K) {
     println!("{}", std::any::type_name::<K>())
 }
 
-fn shadowing(){
+fn shadowing() {
     let x = 5;
     println!("x: {}", x);
     let x = "Anish";
@@ -559,36 +559,36 @@ fn shadowing(){
     println!("x: {}", x);
 }
 
-fn if_else(){
+fn if_else() {
     let num = 12;
 
-    if num % 3==0 && num %4 ==0 {
+    if num % 3 == 0 && num % 4 == 0 {
         println!("Case 1");
-    } else if num % 3==0 {
+    } else if num % 3 == 0 {
         println!("Case 2");
-    } else if num %4 ==0 {
+    } else if num % 4 == 0 {
         println!("Case 3");
     } else {
         println!("case 4");
     }
 }
 
-fn simple_loop(){
+fn simple_loop() {
     // loop {
     //     println!("Hello"); //This will continue to print hello until a break statement is used
     // }
 }
 
-fn while_loop(){
+fn while_loop() {
     let mut count = 0;
-    
+
     while count < 5 {
         println!("While loop");
         count += 1;
     }
 }
 
-fn for_loop(){
+fn for_loop() {
     let arr = [1, 2, 3];
 
     for element in &arr {
@@ -596,7 +596,7 @@ fn for_loop(){
     }
 }
 
-fn match_number(){
+fn match_number() {
     let num = 5;
 
     match num {
@@ -607,8 +607,8 @@ fn match_number(){
     }
 }
 
-fn match_number2(){
-    fn is_even(x: i32)-> bool{
+fn match_number2() {
+    fn is_even(x: i32) -> bool {
         if x % 2 == 0 {
             return true;
         }
@@ -625,7 +625,7 @@ fn match_number2(){
 }
 
 use std::io;
-fn io_example(){
+fn io_example() {
     let mut input = String::new();
     println!("please input your name:");
     io::stdin().read_line(&mut input).expect("Input failed");
