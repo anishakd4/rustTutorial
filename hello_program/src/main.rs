@@ -1,9 +1,8 @@
 const GLOBAL_CONST:u8 = 100;  //warning: constant `global_const` should have an upper case name
 
 fn main() {
-    println!("Hello, Anish!");
-    let num:u8 = 5;
-    println!("This is stored in num: {}", num);
+    println!("Integer data types");
+    integer_data_types();
 
     let num2 = 6;
     println!("this is stored in num2: {}", num2);
@@ -167,6 +166,11 @@ fn main() {
     println!("io_example");
     io_example();
 
+}
+
+fn integer_data_types(){
+    let num:u8 = 5;
+    println!("This is stored in num: {}", num);
 }
 
 fn print_value2(){
