@@ -25,9 +25,10 @@ fn main() {
     tuple_data_type();
     println!("");
 
-    //destructuring
-    let (emp_name2, emp_age2) = emp_info;
-    println!("employee name: {}, employee ageL {} ", emp_name2, emp_age2);
+    println!("destructuring");
+    destructuring();
+    println!("");
+
     print_value(5);
 
     let m1: u8 = 5;
@@ -58,111 +59,148 @@ fn main() {
 
     println!("avoiding_ownership 1");
     avoiding_ownership();
+    println!("");
 
     println!("avoiding_ownership 2");
     avoiding_ownership2();
+    println!("");
 
     println!("avoiding_ownership 3");
     avoiding_ownership3();
+    println!("");
 
     println!("mutable_borrow 1");
     mutable_borrow();
+    println!("");
 
     println!("mutable_borrow 2");
     mutable_borrow2();
+    println!("");
 
     println!("reference_rules 1");
     reference_rules1();
+    println!("");
 
     println!("reference_rules 2");
     reference_rules2();
+    println!("");
 
     println!("reference_rules 3");
     reference_rules3();
+    println!("");
 
     println!("reference_rules 4");
     //reference_rules4();
+    println!("");
 
     println!("reference_rules 5");
     reference_rules5();
+    println!("");
 
     println!("reference_rules 6");
     reference_rules6();
+    println!("");
 
     println!("referencing 1");
     referencing1();
+    println!("");
 
     println!("auto dereferencing");
     auto_dereferencing();
+    println!("");
 
     println!("auto dereferencing 2");
     auto_dereferencing2();
+    println!("");
 
     println!("dereferencing");
     dereferencing();
+    println!("");
 
     println!("dangling_reference");
     dangling_reference();
+    println!("");
 
     println!("float data type");
     float_type();
+    println!("");
 
     println!("bool data type");
     bool_type();
+    println!("");
 
     println!("char data type");
     char_type();
+    println!("");
 
     println!("array_type");
     array_type();
+    println!("");
 
     println!("pass array to function directly");
     pass_array_to_function();
+    println!("");
 
     println!("pass array to function via reference");
     pass_array_to_function2();
+    println!("");
 
     println!("Vectors");
+    println!("");
     vector_fn();
+    println!("");
 
     println!("Vector passed to function");
     vector_fn2();
+    println!("");
 
     println!("Vector passed as reference to function");
     vector_fn3_borrowing();
+    println!("");
 
     println!("Vector passed as mutable reference to function");
     vector_fn3_borrowing_mutable();
+    println!("");
 
     println!("Vector passed to function via cloning");
     vector_fn3_cloning();
+    println!("");
 
     println!("Type inference");
     type_inference();
+    println!("");
 
     println!("shadowing");
     shadowing();
+    println!("");
 
     println!("If Else");
     if_else();
+    println!("");
 
     println!("Loop");
     simple_loop();
+    println!("");
 
     println!("While loop");
     while_loop();
+    println!("");
 
     println!("For loop");
     for_loop();
+    println!("");
 
     println!("match");
     match_number();
+    println!("");
 
     println!("match2");
     match_number2();
+    println!("");
 
     println!("io_example");
     io_example();
+    println!("");
 }
 
 fn integer_data_types() {
@@ -214,17 +252,23 @@ fn tuple_data_type(){
     println!("employee name: {}, employee ageL {} ", emp_name, emp_age);
 }
 
+fn destructuring(){
+    let emp_info: (&str, u8) = ("Ramesh", 9);
+    let (emp_name2, emp_age2) = emp_info;
+    println!("employee name: {}, employee ageL {} ", emp_name2, emp_age2);
+}
+
+fn print_value(item: u8) {
+    println!("My name is anish");
+    println!("item: {}", item);
+}
+
 fn print_value2() {
     println!("GLOBAL_CONST: {}", GLOBAL_CONST);
 }
 
 fn add(item1: u8, item2: u8) -> u8 {
     return item1 + item2;
-}
-
-fn print_value(item: u8) {
-    println!("My name is anish");
-    println!("item: {}", item);
 }
 
 fn ab1() {
