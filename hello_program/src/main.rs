@@ -21,10 +21,9 @@ fn main() {
     string_data_type();
     println!("");
 
-    let emp_info: (&str, u8) = ("Ramesh", 9);
-    let emp_name = emp_info.0;
-    let emp_age = emp_info.1;
-    println!("employee name: {}, employee ageL {} ", emp_name, emp_age);
+    println!("tuple data type");
+    tuple_data_type();
+    println!("");
 
     //destructuring
     let (emp_name2, emp_age2) = emp_info;
@@ -206,6 +205,13 @@ fn string_data_type(){
     println!("this is stored in string_literal3: {}", string_literal3);
     string_literal3.push_str(" dsfdsfsdfdsfd");
     println!("this is stored in string_literal3: {}", string_literal3);
+}
+
+fn tuple_data_type(){
+    let emp_info: (&str, u8) = ("Ramesh", 9);
+    let emp_name = emp_info.0;
+    let emp_age = emp_info.1;
+    println!("employee name: {}, employee ageL {} ", emp_name, emp_age);
 }
 
 fn print_value2() {
