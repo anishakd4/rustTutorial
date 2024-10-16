@@ -3,11 +3,15 @@ const GLOBAL_CONST: u8 = 100;  //warning: constant `global_const` should have an
 fn main() {
     println!("Integer data types");
     integer_data_types();
+    println!("");
 
-    //warning: value assigned to `num3` is never read. Rust throws this warning as the value assigned to num3 is never used
-    let mut num3 = 7;
-    num3 = 8;
-    println!("this is stored in num3: {}", num3);
+    println!("immutable variable");
+    immutable_data_type();
+    println!("");
+
+    println!("mutable variable");
+    mutable_data_type();
+    println!("");
 
     //String -- dynamic length strings -- heap allocated -- String length can be changed
     //$str -- fixed length strings -- Special read only memory -- String length can not be changed
@@ -172,6 +176,19 @@ fn integer_data_types() {
 
     //let x: u8 = 256; //the literal `256` does not fit into the type `u8` whose range is `0..=255
     //let x:u8 = -5; //cannot apply unary operator `-` note: unsigned values cannot be negated
+}
+
+fn immutable_data_type(){
+    let num3 = 7;
+    //num3 = 8; //cannot assign twice to immutable variable
+    println!("this is stored in num3: {}", num3);
+}
+
+fn mutable_data_type(){
+    //warning: value assigned to `num3` is never read. Rust throws this warning as the value assigned to num3 is never used
+    let mut num3 = 7;
+    num3 = 8;
+    println!("this is stored in num3: {}", num3);
 }
 
 fn print_value2() {
