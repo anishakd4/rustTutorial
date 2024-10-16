@@ -197,10 +197,15 @@ fn str_data_type(){
 }
 
 fn string_data_type(){
-    let mut string_literal2 = String::from("hello from anish");
+    let string_literal2 = String::from("hello from anish");
     println!("this is stored in string_literal2: {}", string_literal2);
-    string_literal2.push_str(" dsfdsfsdfdsfd");
+    //string_literal2.push_str(" dsfdsfsdfdsfd"); //cannot borrow as mutable
     println!("this is stored in string_literal2: {}", string_literal2);
+
+    let mut string_literal3 = String::from("hello from anish");
+    println!("this is stored in string_literal3: {}", string_literal3);
+    string_literal3.push_str(" dsfdsfsdfdsfd");
+    println!("this is stored in string_literal3: {}", string_literal3);
 }
 
 fn print_value2() {
