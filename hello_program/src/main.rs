@@ -13,15 +13,13 @@ fn main() {
     mutable_data_type();
     println!("");
 
-    //String -- dynamic length strings -- heap allocated -- String length can be changed
-    //$str -- fixed length strings -- Special read only memory -- String length can not be changed
-    let string_literal = "hello from anish";
-    println!("this is stored in string_literal: {}", string_literal);
+    println!("str data type");
+    str_data_type();
+    println!("");
 
-    let mut string_literal2 = String::from("hello from anish");
-    println!("this is stored in string_literal2: {}", string_literal2);
-    string_literal2.push_str(" dsfdsfsdfdsfd");
-    println!("this is stored in string_literal2: {}", string_literal2);
+    println!("String data type");
+    string_data_type();
+    println!("");
 
     let emp_info: (&str, u8) = ("Ramesh", 9);
     let emp_name = emp_info.0;
@@ -189,6 +187,20 @@ fn mutable_data_type(){
     let mut num3 = 7;
     num3 = 8;
     println!("this is stored in num3: {}", num3);
+}
+
+fn str_data_type(){
+    //String -- dynamic length strings -- heap allocated -- String length can be changed
+    //$str -- fixed length strings -- Special read only memory -- String length can not be changed
+    let string_literal = "hello from anish";
+    println!("this is stored in string_literal: {}", string_literal);
+}
+
+fn string_data_type(){
+    let mut string_literal2 = String::from("hello from anish");
+    println!("this is stored in string_literal2: {}", string_literal2);
+    string_literal2.push_str(" dsfdsfsdfdsfd");
+    println!("this is stored in string_literal2: {}", string_literal2);
 }
 
 fn print_value2() {
