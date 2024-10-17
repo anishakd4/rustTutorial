@@ -59,11 +59,11 @@ fn main() {
     ownership_excercise();
     println!("");
 
-    println!("avoiding_ownership 1");
+    println!("avoiding_ownership using return");
     avoiding_ownership();
     println!("");
 
-    println!("avoiding_ownership 2");
+    println!("avoiding_ownership using clone");
     avoiding_ownership2();
     println!("");
 
