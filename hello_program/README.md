@@ -66,7 +66,7 @@
 
 ![stack_approach](./stack_approach.png)
 
-In the above example stack is used
+In the above example stack is used. In case of `y=2` new memory y is created.
 
 ![heap_approach](./heap_approach.png)
 

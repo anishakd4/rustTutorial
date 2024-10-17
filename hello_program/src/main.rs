@@ -39,8 +39,13 @@ fn main() {
     print_global_constant();
     println!("");
 
-    ab1();
-    str1str2();
+    println!("Scoping overview");
+    stack_operation();
+    println!("");
+
+    println!("ownership overview");
+    ownership_overview();
+    println!("");
 
     process_integer_main();
     process_string_main();
@@ -282,14 +287,15 @@ fn print_global_constant() {
     println!("GLOBAL_CONST: {}", GLOBAL_CONST);
 }
 
-fn ab1() {
+fn stack_operation() {
     let a = 5;
     let b = a;
     println!("a: {}", a);
     println!("b: {}", b);
+    // everything is fixed at compile time. Stack is getting used here.
 }
 
-fn str1str2() {
+fn ownership_overview() {
     let str1 = String::from("Hello"); //str1 is the owner of hello value
     // str1.push_str(" world");
     let str2 = str1; // transfer of ownership because as per rules there can be only 1 owner
