@@ -47,8 +47,13 @@ fn main() {
     ownership_overview();
     println!("");
 
+    println!("process integer");
     process_integer_main();
-    process_string_main();
+    println!("");
+
+    println!("ownership functions");
+    ownership_functions();
+    println!("");
 
     s2_s3_s4();
 
@@ -298,7 +303,7 @@ fn stack_operation() {
 fn ownership_overview() {
     let str1 = String::from("Hello"); //str1 is the owner of hello value
     // str1.push_str(" world");
-    let str2 = str1; // transfer of ownership because as per rules there can be only 1 owner
+    let str2 = str1; // transfer of ownership because as per rules there can be only 1 owner. str2 is the new owner
     //println!("str1 : {}", str1); //borrow of moved value: `str1`
     println!("str2 : {}", str2);
 }
@@ -309,11 +314,11 @@ fn process_integer_main() {
     println!("process_integer_main : x: {}", x);
 }
 
-fn process_integer(x: u8) {
+fn process_integer(x: u8) { //here x is a new memory
     println!("x: {}", x);
 }
 
-fn process_string_main() {
+fn ownership_functions() {
     let x: String = String::from("Hello");
     process_string(x); //transfer of ownership
     //println!("process_string_main : x: {}", x); //x in nothing here as ownership is already transferred.

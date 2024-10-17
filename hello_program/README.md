@@ -70,7 +70,7 @@ In the above example stack is used. In case of `y=2` new memory y is created.
 
 ![heap_approach](./heap_approach.png)
 
-But in above heap is used.
+But in above heap is used. so here copy doesn't happens but a new owner comes into existence then.
 
 ## Avoiding ownership
 
