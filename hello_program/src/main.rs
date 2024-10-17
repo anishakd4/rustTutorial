@@ -1,4 +1,5 @@
-const GLOBAL_CONST: u8 = 100;  //warning: constant `global_const` should have an upper case name
+const GLOBAL_CONST: u8 = 100;  //warning: constant `global_const` should have an upper case name. Also in case of constant
+// we have to declare the type of data type. Type inference doesn't works in in case of constants.
 
 fn main() {
     println!("Integer data types");
@@ -33,18 +34,10 @@ fn main() {
     functions_overview();
     println!("");
 
-    let outside_variable = 5;
-
-    {
-        let inside_variable = 10;
-        println!("inside_variable: {}", inside_variable);
-        println!("outside_variable: {}", outside_variable);
-    }
-
-    //println!("inside_variable: {}", inside_variable); cannot find value `inside_variable` in this scope
-    println!("outside_variable: {}", outside_variable);
-
-    print_value2();
+    println!("Scoping overview");
+    scoping_overview();
+    print_global_constant();
+    println!("");
 
     ab1();
     str1str2();
@@ -272,7 +265,20 @@ fn add(item1: u8, item2: u8) -> u8 {
     return item1 + item2;
 }
 
-fn print_value2() {
+fn scoping_overview(){
+    let outside_variable = 5;
+
+    {
+        let inside_variable = 10;
+        println!("inside_variable: {}", inside_variable);
+        println!("outside_variable: {}", outside_variable);
+    }
+
+    //println!("inside_variable: {}", inside_variable); cannot find value `inside_variable` in this scope
+    println!("outside_variable: {}", outside_variable);
+}
+
+fn print_global_constant() {
     println!("GLOBAL_CONST: {}", GLOBAL_CONST);
 }
 
