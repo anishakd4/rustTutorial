@@ -29,12 +29,9 @@ fn main() {
     destructuring();
     println!("");
 
-    print_value(5);
-
-    let m1: u8 = 5;
-    let m2: u8 = 6;
-    let res = add(m1, m2);
-    println!("res: {}", res);
+    println!("functions");
+    functions_overview();
+    println!("");
 
     let outside_variable = 5;
 
@@ -258,17 +255,25 @@ fn destructuring(){
     println!("employee name: {}, employee ageL {} ", emp_name2, emp_age2);
 }
 
+fn functions_overview(){
+    print_value(5);
+    let m1: u8 = 5;
+    let m2: u8 = 6;
+    let res = add(m1, m2);
+    println!("res: {}", res);
+}
+
 fn print_value(item: u8) {
     println!("My name is anish");
     println!("item: {}", item);
 }
 
-fn print_value2() {
-    println!("GLOBAL_CONST: {}", GLOBAL_CONST);
-}
-
 fn add(item1: u8, item2: u8) -> u8 {
     return item1 + item2;
+}
+
+fn print_value2() {
+    println!("GLOBAL_CONST: {}", GLOBAL_CONST);
 }
 
 fn ab1() {
