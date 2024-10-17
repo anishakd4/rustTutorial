@@ -74,6 +74,8 @@ But in above heap is used. so here copy doesn't happens but a new owner comes in
 
 ## Avoiding ownership
 
+![avoiding_ownership](./avoiding_ownership.png)
+
 - clone method is used for deep copy of heap data. This is an expensive method.
 
 ## Borrowing ownership
