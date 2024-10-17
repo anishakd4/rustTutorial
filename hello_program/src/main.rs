@@ -55,7 +55,9 @@ fn main() {
     ownership_functions();
     println!("");
 
-    s2_s3_s4();
+    println!("ownership excercise");
+    ownership_excercise();
+    println!("");
 
     println!("avoiding_ownership 1");
     avoiding_ownership();
@@ -328,7 +330,7 @@ fn process_string(item: String) { //hello new owner is item
     println!("item: {}", item);
 }
 
-fn s2_s3_s4() {
+fn ownership_excercise() {
     let s1: String = get_string(); //s1 is the owner of  "hello"
     println!("this is s1: {}", s1);
 
