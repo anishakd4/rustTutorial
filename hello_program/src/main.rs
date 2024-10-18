@@ -64,11 +64,11 @@ fn main() {
     println!("");
 
     println!("avoiding_ownership using clone");
-    avoiding_ownership2();
+    avoiding_ownership_using_clone();
     println!("");
 
-    println!("avoiding_ownership 3");
-    avoiding_ownership3();
+    println!("avoiding_ownership using borrow");
+    avoiding_ownership_using_borrow();
     println!("");
 
     println!("mutable_borrow 1");
@@ -361,7 +361,7 @@ fn calculate_length(s1: String) -> (String, usize) {
     return (s1, length);
 }
 
-fn avoiding_ownership2() {
+fn avoiding_ownership_using_clone() {
     let s1: String = String::from("hello");
     let len = calculate_length2(s1.clone());
     println!("s1: {}", s1);
@@ -373,8 +373,7 @@ fn calculate_length2(s1: String) -> usize {
     return length;
 }
 
-
-fn avoiding_ownership3() {
+fn avoiding_ownership_using_borrow() {
     let s1: String = String::from("hello");
     let len = calculate_length3(&s1); //borrow operation
     println!("s1: {}", s1);
