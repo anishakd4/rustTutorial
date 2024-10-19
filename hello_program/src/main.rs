@@ -473,7 +473,7 @@ fn reference_rules6() {
 fn referencing1() {
     let x = 5;
     println!("address: {:p}", &x);
-    let y = &x;
+    let y = &x; // y is the reference to the value of x
     println!("address: {:p}", y);
 }
 
@@ -499,8 +499,9 @@ fn calculate_length4(s1: &String) -> usize {
 fn dereferencing() {
     let mut x = 5;
     x = x + 1;
-    let y = &mut x;
+    let y = &mut x; // y is reference to the value of x
     *y = *y + 1;
+    //y = y + 1; // cannot add `{integer}` to `&mut {integer}`
     println!("x: {}", x);
 }
 
