@@ -459,13 +459,13 @@ fn reference_rules5() {
 }
 
 fn reference_rules6() {
-    // let mut s1: String = String::from("Hello");
+    let mut s1: String = String::from("Hello");
 
-    // let w1 = &mut s1; //mutable borrow occurs here
-    // w1.push_str(" World");
+    let w1 = &mut s1; //mutable borrow occurs here
+    w1.push_str(" World");
 
-    // let r1 = &s1; //immutable borrow occurs here
-    // println!("r1:{}", r1);
+    let r1 = &s1; //immutable borrow occurs here
+    println!("r1:{}", r1);
 
     // println!("w1:{} ", w1); //mutable borrow later used here
 }
