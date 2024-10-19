@@ -566,7 +566,7 @@ fn pass_array_to_function() {
 }
 
 //This method of directly passing array is expensive as we are making a copy of the whole array.
-fn write_arr(mut arr1: [&str; 3]) { //arr1 is a new copy of arr
+fn write_arr(mut arr1: [&str; 3]) { //arr1 is a new copy of arr in the memory
     arr1[0] = "Fellow"; //changes here is only for arr1 not for arr
     println!("arr1: {:?}", arr1);
 }
@@ -578,8 +578,8 @@ fn pass_array_to_function2() {
     println!("arr : {:?}", arr);
 }
 
-fn write_arr2(arr2: &mut [&str; 3]) { //arr1 is a new copy of arr
-    arr2[0] = "Fellow"; //changes here is only for arr1 not for arr
+fn write_arr2(arr2: &mut [&str; 3]) {
+    arr2[0] = "Fellow";
     println!("arr2: {:?}", arr2);
 }
 
