@@ -148,7 +148,6 @@ fn main() {
     println!("");
 
     println!("Vectors");
-    println!("");
     vector_fn();
     println!("");
 
@@ -560,7 +559,7 @@ fn array_type() {
 
 //pass directly
 fn pass_array_to_function() {
-    let arr: [&str; 3] = ["Hello", "world", "coders"];
+    let arr: [&str; 3] = ["Hello", "world", "coders"]; //array is stack based data type.
     write_arr(arr); // here array is fixed array there is no heap involved here. Array is passes directly to function
     println!("arr : {:?}", arr);
 }
@@ -604,7 +603,7 @@ fn vector_fn() {
 }
 
 fn vector_fn2() {
-    let vrr: Vec<&str> = vec!["Hello", "World!", "coders"];
+    let vrr: Vec<&str> = vec!["Hello", "World!", "coders"]; //vector is heap allocated data type
     write_vec3(vrr); //ownership transferred
     //println!("vrr: {:?}", vrr); //so this won't compile
 }
