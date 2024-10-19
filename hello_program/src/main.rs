@@ -92,7 +92,7 @@ fn main() {
     println!("");
 
     println!("reference_rules 4");
-    //reference_rules4();
+    reference_rules4();
     println!("");
 
     println!("reference_rules 5");
@@ -440,7 +440,7 @@ fn reference_rules4() {
     w1.push_str(" World");
 
     //second mutable borrow occurs here
-    let w2 = &mut s1; //cannot borrow `s1` as mutable more than once at a time
+    let w2 = &mut s1;
     w2.push_str(" Code");
 
     //println!("w2:{} w1:{}", w2, w1); //first borrow later used here
