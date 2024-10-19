@@ -698,7 +698,7 @@ fn while_loop() {
 fn for_loop() {
     let arr = [1, 2, 3];
 
-    for element in &arr {
+    for element in arr {
         println!("{}", element);
     }
 }
