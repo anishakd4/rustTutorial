@@ -434,16 +434,16 @@ fn reference_rules3() {
 }
 
 fn reference_rules4() {
-    // let mut s1: String = String::from("Hello");
+    let mut s1: String = String::from("Hello");
 
-    // let w1 = &mut s1; //first mutable borrow occurs here
-    // w1.push_str(" World");
+    let w1 = &mut s1; //first mutable borrow occurs here
+    w1.push_str(" World");
 
-    // //second mutable borrow occurs here
-    // let w2 = &mut s1; //cannot borrow `s1` as mutable more than once at a time
-    // w2.push_str(" Code");
+    //second mutable borrow occurs here
+    let w2 = &mut s1; //cannot borrow `s1` as mutable more than once at a time
+    w2.push_str(" Code");
 
-    // println!("w2:{} w1:{}", w2, w1); //first borrow later used here
+    //println!("w2:{} w1:{}", w2, w1); //first borrow later used here
 }
 
 
