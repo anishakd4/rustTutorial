@@ -159,7 +159,7 @@ fn main() {
     vector_fn3_borrowing();
     println!("");
 
-    println!("Vector passed as mutable reference to function");
+    println!("Vector passed as mutable reference to function or using the clone function");
     vector_fn3_borrowing_mutable();
     println!("");
 
