@@ -64,11 +64,11 @@ fn main() {
     println!("");
 
     println!("avoiding_ownership using clone");
-    avoiding_ownership2();
+    avoiding_ownership_using_clone();
     println!("");
 
-    println!("avoiding_ownership 3");
-    avoiding_ownership3();
+    println!("avoiding_ownership using borrow");
+    avoiding_ownership_using_borrow();
     println!("");
 
     println!("mutable_borrow 1");
@@ -92,7 +92,7 @@ fn main() {
     println!("");
 
     println!("reference_rules 4");
-    //reference_rules4();
+    reference_rules4();
     println!("");
 
     println!("reference_rules 5");
@@ -148,7 +148,6 @@ fn main() {
     println!("");
 
     println!("Vectors");
-    println!("");
     vector_fn();
     println!("");
 
@@ -160,7 +159,7 @@ fn main() {
     vector_fn3_borrowing();
     println!("");
 
-    println!("Vector passed as mutable reference to function");
+    println!("Vector passed as mutable reference to function or using the clone function");
     vector_fn3_borrowing_mutable();
     println!("");
 
@@ -361,7 +360,7 @@ fn calculate_length(s1: String) -> (String, usize) {
     return (s1, length);
 }
 
-fn avoiding_ownership2() {
+fn avoiding_ownership_using_clone() {
     let s1: String = String::from("hello");
     let len = calculate_length2(s1.clone());
     println!("s1: {}", s1);
@@ -373,8 +372,7 @@ fn calculate_length2(s1: String) -> usize {
     return length;
 }
 
-
-fn avoiding_ownership3() {
+fn avoiding_ownership_using_borrow() {
     let s1: String = String::from("hello");
     let len = calculate_length3(&s1); //borrow operation
     println!("s1: {}", s1);
@@ -435,16 +433,16 @@ fn reference_rules3() {
 }
 
 fn reference_rules4() {
-    // let mut s1: String = String::from("Hello");
+    let mut s1: String = String::from("Hello");
 
-    // let w1 = &mut s1; //first mutable borrow occurs here
-    // w1.push_str(" World");
+    let w1 = &mut s1; //first mutable borrow occurs here
+    w1.push_str(" World");
 
-    // //second mutable borrow occurs here
-    // let w2 = &mut s1; //cannot borrow `s1` as mutable more than once at a time
-    // w2.push_str(" Code");
+    //second mutable borrow occurs here
+    let w2 = &mut s1;
+    w2.push_str(" Code");
 
-    // println!("w2:{} w1:{}", w2, w1); //first borrow later used here
+    //println!("w2:{} w1:{}", w2, w1); //first borrow later used here
 }
 
 
@@ -460,13 +458,13 @@ fn reference_rules5() {
 }
 
 fn reference_rules6() {
-    // let mut s1: String = String::from("Hello");
+    let mut s1: String = String::from("Hello");
 
-    // let w1 = &mut s1; //mutable borrow occurs here
-    // w1.push_str(" World");
+    let w1 = &mut s1; //mutable borrow occurs here
+    w1.push_str(" World");
 
-    // let r1 = &s1; //immutable borrow occurs here
-    // println!("r1:{}", r1);
+    let r1 = &s1; //immutable borrow occurs here
+    println!("r1:{}", r1);
 
     // println!("w1:{} ", w1); //mutable borrow later used here
 }
@@ -474,7 +472,7 @@ fn reference_rules6() {
 fn referencing1() {
     let x = 5;
     println!("address: {:p}", &x);
-    let y = &x;
+    let y = &x; // y is the reference to the value of x
     println!("address: {:p}", y);
 }
 
@@ -500,8 +498,9 @@ fn calculate_length4(s1: &String) -> usize {
 fn dereferencing() {
     let mut x = 5;
     x = x + 1;
-    let y = &mut x;
+    let y = &mut x; // y is reference to the value of x
     *y = *y + 1;
+    //y = y + 1; // cannot add `{integer}` to `&mut {integer}`
     println!("x: {}", x);
 }
 
@@ -560,13 +559,13 @@ fn array_type() {
 
 //pass directly
 fn pass_array_to_function() {
-    let arr: [&str; 3] = ["Hello", "world", "coders"];
+    let arr: [&str; 3] = ["Hello", "world", "coders"]; //array is stack based data type.
     write_arr(arr); // here array is fixed array there is no heap involved here. Array is passes directly to function
     println!("arr : {:?}", arr);
 }
 
 //This method of directly passing array is expensive as we are making a copy of the whole array.
-fn write_arr(mut arr1: [&str; 3]) { //arr1 is a new copy of arr
+fn write_arr(mut arr1: [&str; 3]) { //arr1 is a new copy of arr in the memory
     arr1[0] = "Fellow"; //changes here is only for arr1 not for arr
     println!("arr1: {:?}", arr1);
 }
@@ -578,8 +577,8 @@ fn pass_array_to_function2() {
     println!("arr : {:?}", arr);
 }
 
-fn write_arr2(arr2: &mut [&str; 3]) { //arr1 is a new copy of arr
-    arr2[0] = "Fellow"; //changes here is only for arr1 not for arr
+fn write_arr2(arr2: &mut [&str; 3]) {
+    arr2[0] = "Fellow";
     println!("arr2: {:?}", arr2);
 }
 
@@ -604,7 +603,7 @@ fn vector_fn() {
 }
 
 fn vector_fn2() {
-    let vrr: Vec<&str> = vec!["Hello", "World!", "coders"];
+    let vrr: Vec<&str> = vec!["Hello", "World!", "coders"]; //vector is heap allocated data type
     write_vec3(vrr); //ownership transferred
     //println!("vrr: {:?}", vrr); //so this won't compile
 }
@@ -699,7 +698,7 @@ fn while_loop() {
 fn for_loop() {
     let arr = [1, 2, 3];
 
-    for element in &arr {
+    for element in arr {
         println!("{}", element);
     }
 }
